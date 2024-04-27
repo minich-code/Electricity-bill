@@ -1,8 +1,13 @@
-# from src.ElectricityBill.logger import logging
-
-# logging.info ("This is a custom log")
-
-#from src.ElectricityBill.ElectricityBill import ElectricityBill
 from src.ElectricityBill import logging
+from src.ElectricityBill.pipelines.stage_01_data_ingestion import DataIngestionPipeline
 
-logging.info ("This is a custom log")
+
+STAGE_NAME = "Data Ingestion Stage"
+try:
+    logging.info(f"++++++++++++++++++++++ stage {STAGE_NAME} started ++++++++++++++++++++++++++")
+    data_ingestion = DataIngestionPipeline()
+    data_ingestion.main()
+    logging.info(f"*************** stage {STAGE_NAME} completed ****************\n\nx================x")
+except Exception as e:
+    logging.exception(e)
+    raise e
