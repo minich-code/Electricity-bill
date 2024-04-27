@@ -1,0 +1,16 @@
+COLUMNS:
+  Fan: int64
+  Refrigerator: float64
+  AirConditioner: float64
+  Television: float64
+  Monitor: float64
+  MotorPump: int64
+  Month: int64
+  City: object
+  Company: object
+  MonthlyHours: int64
+  TariffRate: float64
+  ElectricityBill: float64
+
+TARGET_COLUMN:
+  name: ElectricityBill
