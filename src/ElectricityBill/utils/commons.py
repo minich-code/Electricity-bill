@@ -1,9 +1,9 @@
 import os
 from box.exceptions import BoxValueError
-#from src.ElectricityBill.exception import FileOperationError
-#import sys
+import sys
 import yaml
 from src.ElectricityBill import logging
+from src.ElectricityBill.exception import FileOperationError
 import json
 import joblib
 from ensure import ensure_annotations
@@ -51,6 +51,18 @@ def create_directories(path_to_directories: list, verbose=True):
         os.makedirs(path, exist_ok=True)
         if verbose:
             logging.info(f"created directory at: {path}")
+
+def save_object(file_path, obj):
+    
+    # Get the directory path of the file 
+    dir_path = os.path.dirname(file_path)
+    # if the directory path does not exist, create it 
+    os.makedirs(dir_path, exist_ok = True)
+
+    # save the object in the file 
+    with open(file_path, 'wb') as file_obj:
+        joblib.dump(obj, file_obj)
+
 
 
 @ensure_annotations
